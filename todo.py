@@ -49,10 +49,18 @@ def get_valid_option():
         get_valid_option()
 def load_todo_list():
     #Loads list from txt file and initiates the dictionary with the values in the file.
-    with open('data.txt', "r") as file:
-        for line in file:
-            activity, status = line.strip().split(': ')
-            todo_list[activity] = status
+    #If the file doesn't exist, the program creates it and starts with an empty list.
+    try:
+        with open('data.txt', "r") as file:
+            for line in file:
+                activity, status = line.strip().split(': ')
+                todo_list[activity] = status
+    except:
+        print("**************************************")
+        print("*No database found, creating data.txt*")
+        print("**************************************")
+        file = open('data.txt', "x")
+        return
 
 def save_todo_list():
     #Updates txt file with the data on the dictionary
