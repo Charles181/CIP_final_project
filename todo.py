@@ -72,7 +72,10 @@ def add_activity():
     print("-----Add activity------")
     print("Enter 0 to go to main menu")
     activity = input("Please enter the name of an activity to add: \n")
-    if activity in todo_list:
+    if not activity:
+        print("***Please enter a valid activity name.***")
+        return add_activity()
+    elif activity in todo_list:
         print(f"{activity} is already on the list!")
         print("")
         return
@@ -89,7 +92,10 @@ def mark_complete():
     print("-----Mark activity as complete-----")
     print("Enter 0 to go to main menu")
     activity = input("Which activity have you completed? \n")
-    if activity in todo_list:
+    if not activity:
+        print("***Please enter a valid activity name.***")
+        return mark_complete()
+    elif activity in todo_list:
         if todo_list[activity] == 'Pending':
             todo_list[activity] = 'Completed'
             print(f"You've succesfully updated activity {activity}")
@@ -107,7 +113,10 @@ def delete_activity():
     print("-----Delete activity-----")
     print("Enter 0 to go to main menu")
     activity = input("Which activity would you like to delete from the list? \n")
-    if activity in todo_list:
+    if not activity:
+        print("***Please enter a valid activity name.***")
+        return delete_activity()
+    elif activity in todo_list:
         todo_list.pop(activity)
         save_todo_list()
         print(f"{activity} deleted successfully!")
