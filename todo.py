@@ -46,7 +46,7 @@ def get_valid_option():
     except ValueError:
         print("")
         print("No option entered.\n Please try again...")
-        get_valid_option()
+        return get_valid_option()
 def load_todo_list():
     #Loads list from txt file and initiates the dictionary with the values in the file.
     #If the file doesn't exist, the program creates it and starts with an empty list.
